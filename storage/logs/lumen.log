@@ -1,0 +1,303 @@
+[2018-03-06 14:18:34] lumen.ERROR: exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'name' in 'field list'' in G:\UwAmp\www\api.arrosmart.tk\vendor\illuminate\database\Connection.php:333
+Stack trace:
+#0 G:\UwAmp\www\api.arrosmart.tk\vendor\illuminate\database\Connection.php(333): PDO->prepare('SELECT id,name ...')
+#1 G:\UwAmp\www\api.arrosmart.tk\vendor\illuminate\database\Connection.php(722): Illuminate\Database\Connection->Illuminate\Database\{closure}(Object(Illuminate\Database\MySqlConnection), 'SELECT id,name ...', Array)
+#2 G:\UwAmp\www\api.arrosmart.tk\vendor\illuminate\database\Connection.php(685): Illuminate\Database\Connection->runQueryCallback('SELECT id,name ...', Array, Object(Closure))
+#3 G:\UwAmp\www\api.arrosmart.tk\vendor\illuminate\database\Connection.php(349): Illuminate\Database\Connection->run('SELECT id,name ...', Array, Object(Closure))
+#4 [internal function]: Illuminate\Database\Connection->select('SELECT id,name ...')
+#5 G:\UwAmp\www\api.arrosmart.tk\vendor\illuminate\database\DatabaseManager.php(317): call_user_func_array(Array, Array)
+#6 G:\UwAmp\www\api.arrosmart.tk\vendor\illuminate\support\Facades\Facade.php(217): Illuminate\Database\DatabaseManager->__call('select', Array)
+#7 G:\UwAmp\www\api.arrosmart.tk\vendor\illuminate\support\Facades\Facade.php(217): Illuminate\Database\DatabaseManager->select('SELECT id,name ...')
+#8 G:\UwAmp\www\api.arrosmart.tk\app\Http\Controllers\UsersController.php(25): Illuminate\Support\Facades\Facade::__callStatic('select', Array)
+#9 G:\UwAmp\www\api.arrosmart.tk\app\Http\Controllers\UsersController.php(25): Illuminate\Support\Facades\DB::select('SELECT id,name ...')
+#10 [internal function]: App\Http\Controllers\UsersController->showAllUsers()
+#11 G:\UwAmp\www\api.arrosmart.tk\vendor\illuminate\container\Container.php(507): call_user_func_array(Array, Array)
+#12 G:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(603): Illuminate\Container\Container->call(Array, Array)
+#13 G:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(570): Laravel\Lumen\Application->callControllerCallable(Array, Array)
+#14 G:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(543): Laravel\Lumen\Application->callLumenController(Object(App\Http\Controllers\UsersController), 'showAllUsers', Array)
+#15 G:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(511): Laravel\Lumen\Application->callControllerAction(Array)
+#16 G:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(496): Laravel\Lumen\Application->callActionOnArrayBasedRoute(Array)
+#17 G:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(393): Laravel\Lumen\Application->handleFoundRoute(Array)
+#18 G:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(643): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#19 G:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(399): Laravel\Lumen\Application->sendThroughPipeline(Array, Object(Closure))
+#20 G:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(340): Laravel\Lumen\Application->dispatch(Object(Illuminate\Http\Request))
+#21 G:\UwAmp\www\api.arrosmart.tk\public\index.php(28): Laravel\Lumen\Application->run(Object(Illuminate\Http\Request))
+#22 {main}
+
+Next exception 'Illuminate\Database\QueryException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'name' in 'field list' (SQL: SELECT id,name FROM users)' in G:\UwAmp\www\api.arrosmart.tk\vendor\illuminate\database\Connection.php:729
+Stack trace:
+#0 G:\UwAmp\www\api.arrosmart.tk\vendor\illuminate\database\Connection.php(685): Illuminate\Database\Connection->runQueryCallback('SELECT id,name ...', Array, Object(Closure))
+#1 G:\UwAmp\www\api.arrosmart.tk\vendor\illuminate\database\Connection.php(349): Illuminate\Database\Connection->run('SELECT id,name ...', Array, Object(Closure))
+#2 [internal function]: Illuminate\Database\Connection->select('SELECT id,name ...')
+#3 G:\UwAmp\www\api.arrosmart.tk\vendor\illuminate\database\DatabaseManager.php(317): call_user_func_array(Array, Array)
+#4 G:\UwAmp\www\api.arrosmart.tk\vendor\illuminate\support\Facades\Facade.php(217): Illuminate\Database\DatabaseManager->__call('select', Array)
+#5 G:\UwAmp\www\api.arrosmart.tk\vendor\illuminate\support\Facades\Facade.php(217): Illuminate\Database\DatabaseManager->select('SELECT id,name ...')
+#6 G:\UwAmp\www\api.arrosmart.tk\app\Http\Controllers\UsersController.php(25): Illuminate\Support\Facades\Facade::__callStatic('select', Array)
+#7 G:\UwAmp\www\api.arrosmart.tk\app\Http\Controllers\UsersController.php(25): Illuminate\Support\Facades\DB::select('SELECT id,name ...')
+#8 [internal function]: App\Http\Controllers\UsersController->showAllUsers()
+#9 G:\UwAmp\www\api.arrosmart.tk\vendor\illuminate\container\Container.php(507): call_user_func_array(Array, Array)
+#10 G:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(603): Illuminate\Container\Container->call(Array, Array)
+#11 G:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(570): Laravel\Lumen\Application->callControllerCallable(Array, Array)
+#12 G:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(543): Laravel\Lumen\Application->callLumenController(Object(App\Http\Controllers\UsersController), 'showAllUsers', Array)
+#13 G:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(511): Laravel\Lumen\Application->callControllerAction(Array)
+#14 G:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(496): Laravel\Lumen\Application->callActionOnArrayBasedRoute(Array)
+#15 G:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(393): Laravel\Lumen\Application->handleFoundRoute(Array)
+#16 G:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(643): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#17 G:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(399): Laravel\Lumen\Application->sendThroughPipeline(Array, Object(Closure))
+#18 G:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(340): Laravel\Lumen\Application->dispatch(Object(Illuminate\Http\Request))
+#19 G:\UwAmp\www\api.arrosmart.tk\public\index.php(28): Laravel\Lumen\Application->run(Object(Illuminate\Http\Request))
+#20 {main}  
+[2018-03-06 14:22:51] lumen.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected ':'' in G:\UwAmp\www\api.arrosmart.tk\app\Http\Controllers\UsersController.php:14
+Stack trace:
+#0 G:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RegistersExceptionHandlers.php(55): Laravel\Lumen\Application->handleShutdown()
+#1 [internal function]: Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#2 {main}  
+[2018-03-06 14:29:02] lumen.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '}'' in G:\UwAmp\www\api.arrosmart.tk\app\Http\Controllers\UsersController.php:28
+Stack trace:
+#0 G:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RegistersExceptionHandlers.php(55): Laravel\Lumen\Application->handleShutdown()
+#1 [internal function]: Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#2 {main}  
+[2018-03-06 14:29:11] lumen.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'Response' not found' in G:\UwAmp\www\api.arrosmart.tk\app\Http\Controllers\UsersController.php:27
+Stack trace:
+#0 G:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RegistersExceptionHandlers.php(55): Laravel\Lumen\Application->handleShutdown()
+#1 [internal function]: Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#2 {main}  
+[2018-03-06 17:44:48] lumen.ERROR: exception 'Symfony\Component\HttpKernel\Exception\HttpException' with message 'Unauthorized action.' in E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RegistersExceptionHandlers.php:32
+Stack trace:
+#0 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\helpers.php(21): Laravel\Lumen\Application->abort(403, 'Unauthorized ac...', Array)
+#1 E:\UwAmp\www\api.arrosmart.tk\app\Http\routes.php(15): abort(403, 'Unauthorized ac...')
+#2 [internal function]: Closure->{closure}()
+#3 E:\UwAmp\www\api.arrosmart.tk\vendor\illuminate\container\Container.php(507): call_user_func_array(Object(Closure), Array)
+#4 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(522): Illuminate\Container\Container->call(Object(Closure), Array)
+#5 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(496): Laravel\Lumen\Application->callActionOnArrayBasedRoute(Array)
+#6 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(393): Laravel\Lumen\Application->handleFoundRoute(Array)
+#7 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(643): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#8 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(399): Laravel\Lumen\Application->sendThroughPipeline(Array, Object(Closure))
+#9 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(340): Laravel\Lumen\Application->dispatch(Object(Illuminate\Http\Request))
+#10 E:\UwAmp\www\api.arrosmart.tk\public\index.php(28): Laravel\Lumen\Application->run(Object(Illuminate\Http\Request))
+#11 {main}  
+[2018-03-06 17:44:51] lumen.ERROR: exception 'Symfony\Component\HttpKernel\Exception\HttpException' with message 'Unauthorized action.' in E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RegistersExceptionHandlers.php:32
+Stack trace:
+#0 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\helpers.php(21): Laravel\Lumen\Application->abort(403, 'Unauthorized ac...', Array)
+#1 E:\UwAmp\www\api.arrosmart.tk\app\Http\routes.php(15): abort(403, 'Unauthorized ac...')
+#2 [internal function]: Closure->{closure}()
+#3 E:\UwAmp\www\api.arrosmart.tk\vendor\illuminate\container\Container.php(507): call_user_func_array(Object(Closure), Array)
+#4 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(522): Illuminate\Container\Container->call(Object(Closure), Array)
+#5 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(496): Laravel\Lumen\Application->callActionOnArrayBasedRoute(Array)
+#6 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(393): Laravel\Lumen\Application->handleFoundRoute(Array)
+#7 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(643): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#8 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(399): Laravel\Lumen\Application->sendThroughPipeline(Array, Object(Closure))
+#9 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(340): Laravel\Lumen\Application->dispatch(Object(Illuminate\Http\Request))
+#10 E:\UwAmp\www\api.arrosmart.tk\public\index.php(28): Laravel\Lumen\Application->run(Object(Illuminate\Http\Request))
+#11 {main}  
+[2018-03-06 17:51:00] lumen.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to undefined method Symfony\Component\HttpFoundation\ParameterBag::except()' in E:\UwAmp\www\api.arrosmart.tk\app\Http\Controllers\UsersController.php:13
+Stack trace:
+#0 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RegistersExceptionHandlers.php(55): Laravel\Lumen\Application->handleShutdown()
+#1 [internal function]: Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#2 {main}  
+[2018-03-06 17:51:30] lumen.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to undefined method Symfony\Component\HttpFoundation\ParameterBag::except()' in E:\UwAmp\www\api.arrosmart.tk\app\Http\Controllers\UsersController.php:13
+Stack trace:
+#0 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RegistersExceptionHandlers.php(55): Laravel\Lumen\Application->handleShutdown()
+#1 [internal function]: Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#2 {main}  
+[2018-03-06 17:51:39] lumen.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to undefined method Symfony\Component\HttpFoundation\ParameterBag::except()' in E:\UwAmp\www\api.arrosmart.tk\app\Http\Controllers\UsersController.php:14
+Stack trace:
+#0 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RegistersExceptionHandlers.php(55): Laravel\Lumen\Application->handleShutdown()
+#1 [internal function]: Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#2 {main}  
+[2018-03-06 17:52:59] lumen.ERROR: exception 'ErrorException' with message 'Undefined property: App\Http\Controllers\UsersController::$fields' in E:\UwAmp\www\api.arrosmart.tk\app\Http\Controllers\UsersController.php:20
+Stack trace:
+#0 E:\UwAmp\www\api.arrosmart.tk\app\Http\Controllers\UsersController.php(20): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}(8, 'Undefined prope...', 'E:\\UwAmp\\www\\ap...', 20, Array)
+#1 [internal function]: App\Http\Controllers\UsersController->showAllUsers()
+#2 E:\UwAmp\www\api.arrosmart.tk\vendor\illuminate\container\Container.php(507): call_user_func_array(Array, Array)
+#3 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(603): Illuminate\Container\Container->call(Array, Array)
+#4 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(570): Laravel\Lumen\Application->callControllerCallable(Array, Array)
+#5 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(543): Laravel\Lumen\Application->callLumenController(Object(App\Http\Controllers\UsersController), 'showAllUsers', Array)
+#6 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(511): Laravel\Lumen\Application->callControllerAction(Array)
+#7 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(496): Laravel\Lumen\Application->callActionOnArrayBasedRoute(Array)
+#8 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(393): Laravel\Lumen\Application->handleFoundRoute(Array)
+#9 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(643): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#10 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(399): Laravel\Lumen\Application->sendThroughPipeline(Array, Object(Closure))
+#11 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(340): Laravel\Lumen\Application->dispatch(Object(Illuminate\Http\Request))
+#12 E:\UwAmp\www\api.arrosmart.tk\public\index.php(28): Laravel\Lumen\Application->run(Object(Illuminate\Http\Request))
+#13 {main}  
+[2018-03-06 17:53:34] lumen.ERROR: exception 'ErrorException' with message 'Undefined property: App\Http\Controllers\UsersController::$fields' in E:\UwAmp\www\api.arrosmart.tk\app\Http\Controllers\UsersController.php:19
+Stack trace:
+#0 E:\UwAmp\www\api.arrosmart.tk\app\Http\Controllers\UsersController.php(19): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}(8, 'Undefined prope...', 'E:\\UwAmp\\www\\ap...', 19, Array)
+#1 [internal function]: App\Http\Controllers\UsersController->showAllUsers()
+#2 E:\UwAmp\www\api.arrosmart.tk\vendor\illuminate\container\Container.php(507): call_user_func_array(Array, Array)
+#3 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(603): Illuminate\Container\Container->call(Array, Array)
+#4 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(570): Laravel\Lumen\Application->callControllerCallable(Array, Array)
+#5 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(543): Laravel\Lumen\Application->callLumenController(Object(App\Http\Controllers\UsersController), 'showAllUsers', Array)
+#6 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(511): Laravel\Lumen\Application->callControllerAction(Array)
+#7 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(496): Laravel\Lumen\Application->callActionOnArrayBasedRoute(Array)
+#8 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(393): Laravel\Lumen\Application->handleFoundRoute(Array)
+#9 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(643): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#10 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(399): Laravel\Lumen\Application->sendThroughPipeline(Array, Object(Closure))
+#11 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(340): Laravel\Lumen\Application->dispatch(Object(Illuminate\Http\Request))
+#12 E:\UwAmp\www\api.arrosmart.tk\public\index.php(28): Laravel\Lumen\Application->run(Object(Illuminate\Http\Request))
+#13 {main}  
+[2018-03-06 17:53:47] lumen.ERROR: exception 'ErrorException' with message 'Undefined property: App\Http\Controllers\UsersController::$fields' in E:\UwAmp\www\api.arrosmart.tk\app\Http\Controllers\UsersController.php:19
+Stack trace:
+#0 E:\UwAmp\www\api.arrosmart.tk\app\Http\Controllers\UsersController.php(19): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}(8, 'Undefined prope...', 'E:\\UwAmp\\www\\ap...', 19, Array)
+#1 [internal function]: App\Http\Controllers\UsersController->showAllUsers()
+#2 E:\UwAmp\www\api.arrosmart.tk\vendor\illuminate\container\Container.php(507): call_user_func_array(Array, Array)
+#3 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(603): Illuminate\Container\Container->call(Array, Array)
+#4 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(570): Laravel\Lumen\Application->callControllerCallable(Array, Array)
+#5 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(543): Laravel\Lumen\Application->callLumenController(Object(App\Http\Controllers\UsersController), 'showAllUsers', Array)
+#6 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(511): Laravel\Lumen\Application->callControllerAction(Array)
+#7 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(496): Laravel\Lumen\Application->callActionOnArrayBasedRoute(Array)
+#8 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(393): Laravel\Lumen\Application->handleFoundRoute(Array)
+#9 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(643): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#10 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(399): Laravel\Lumen\Application->sendThroughPipeline(Array, Object(Closure))
+#11 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(340): Laravel\Lumen\Application->dispatch(Object(Illuminate\Http\Request))
+#12 E:\UwAmp\www\api.arrosmart.tk\public\index.php(28): Laravel\Lumen\Application->run(Object(Illuminate\Http\Request))
+#13 {main}  
+[2018-03-06 17:55:19] lumen.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function get() on a non-object' in E:\UwAmp\www\api.arrosmart.tk\app\Http\Controllers\UsersController.php:11
+Stack trace:
+#0 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RegistersExceptionHandlers.php(55): Laravel\Lumen\Application->handleShutdown()
+#1 [internal function]: Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#2 {main}  
+[2018-03-06 17:56:06] lumen.ERROR: exception 'ErrorException' with message 'Undefined property: App\Http\Controllers\UsersController::$fields' in E:\UwAmp\www\api.arrosmart.tk\app\Http\Controllers\UsersController.php:20
+Stack trace:
+#0 E:\UwAmp\www\api.arrosmart.tk\app\Http\Controllers\UsersController.php(20): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}(8, 'Undefined prope...', 'E:\\UwAmp\\www\\ap...', 20, Array)
+#1 [internal function]: App\Http\Controllers\UsersController->showAllUsers()
+#2 E:\UwAmp\www\api.arrosmart.tk\vendor\illuminate\container\Container.php(507): call_user_func_array(Array, Array)
+#3 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(603): Illuminate\Container\Container->call(Array, Array)
+#4 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(570): Laravel\Lumen\Application->callControllerCallable(Array, Array)
+#5 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(543): Laravel\Lumen\Application->callLumenController(Object(App\Http\Controllers\UsersController), 'showAllUsers', Array)
+#6 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(511): Laravel\Lumen\Application->callControllerAction(Array)
+#7 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(496): Laravel\Lumen\Application->callActionOnArrayBasedRoute(Array)
+#8 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(393): Laravel\Lumen\Application->handleFoundRoute(Array)
+#9 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(643): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#10 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(399): Laravel\Lumen\Application->sendThroughPipeline(Array, Object(Closure))
+#11 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(340): Laravel\Lumen\Application->dispatch(Object(Illuminate\Http\Request))
+#12 E:\UwAmp\www\api.arrosmart.tk\public\index.php(28): Laravel\Lumen\Application->run(Object(Illuminate\Http\Request))
+#13 {main}  
+[2018-03-06 17:56:20] lumen.ERROR: exception 'ErrorException' with message 'Undefined property: App\Http\Controllers\UsersController::$fields' in E:\UwAmp\www\api.arrosmart.tk\app\Http\Controllers\UsersController.php:21
+Stack trace:
+#0 E:\UwAmp\www\api.arrosmart.tk\app\Http\Controllers\UsersController.php(21): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}(8, 'Undefined prope...', 'E:\\UwAmp\\www\\ap...', 21, Array)
+#1 [internal function]: App\Http\Controllers\UsersController->showAllUsers()
+#2 E:\UwAmp\www\api.arrosmart.tk\vendor\illuminate\container\Container.php(507): call_user_func_array(Array, Array)
+#3 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(603): Illuminate\Container\Container->call(Array, Array)
+#4 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(570): Laravel\Lumen\Application->callControllerCallable(Array, Array)
+#5 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(543): Laravel\Lumen\Application->callLumenController(Object(App\Http\Controllers\UsersController), 'showAllUsers', Array)
+#6 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(511): Laravel\Lumen\Application->callControllerAction(Array)
+#7 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(496): Laravel\Lumen\Application->callActionOnArrayBasedRoute(Array)
+#8 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(393): Laravel\Lumen\Application->handleFoundRoute(Array)
+#9 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(643): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#10 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(399): Laravel\Lumen\Application->sendThroughPipeline(Array, Object(Closure))
+#11 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(340): Laravel\Lumen\Application->dispatch(Object(Illuminate\Http\Request))
+#12 E:\UwAmp\www\api.arrosmart.tk\public\index.php(28): Laravel\Lumen\Application->run(Object(Illuminate\Http\Request))
+#13 {main}  
+[2018-03-06 17:56:59] lumen.ERROR: exception 'ErrorException' with message 'Undefined property: App\Http\Controllers\UsersController::$fields' in E:\UwAmp\www\api.arrosmart.tk\app\Http\Controllers\UsersController.php:21
+Stack trace:
+#0 E:\UwAmp\www\api.arrosmart.tk\app\Http\Controllers\UsersController.php(21): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}(8, 'Undefined prope...', 'E:\\UwAmp\\www\\ap...', 21, Array)
+#1 [internal function]: App\Http\Controllers\UsersController->showAllUsers()
+#2 E:\UwAmp\www\api.arrosmart.tk\vendor\illuminate\container\Container.php(507): call_user_func_array(Array, Array)
+#3 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(603): Illuminate\Container\Container->call(Array, Array)
+#4 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(570): Laravel\Lumen\Application->callControllerCallable(Array, Array)
+#5 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(543): Laravel\Lumen\Application->callLumenController(Object(App\Http\Controllers\UsersController), 'showAllUsers', Array)
+#6 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(511): Laravel\Lumen\Application->callControllerAction(Array)
+#7 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(496): Laravel\Lumen\Application->callActionOnArrayBasedRoute(Array)
+#8 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(393): Laravel\Lumen\Application->handleFoundRoute(Array)
+#9 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(643): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#10 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(399): Laravel\Lumen\Application->sendThroughPipeline(Array, Object(Closure))
+#11 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(340): Laravel\Lumen\Application->dispatch(Object(Illuminate\Http\Request))
+#12 E:\UwAmp\www\api.arrosmart.tk\public\index.php(28): Laravel\Lumen\Application->run(Object(Illuminate\Http\Request))
+#13 {main}  
+[2018-03-06 17:57:51] lumen.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to undefined method Symfony\Component\HttpFoundation\ParameterBag::except()' in E:\UwAmp\www\api.arrosmart.tk\app\Http\Controllers\UsersController.php:17
+Stack trace:
+#0 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RegistersExceptionHandlers.php(55): Laravel\Lumen\Application->handleShutdown()
+#1 [internal function]: Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#2 {main}  
+[2018-03-06 18:14:32] lumen.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected ')'' in E:\UwAmp\www\api.arrosmart.tk\app\Http\Controllers\UsersController.php:56
+Stack trace:
+#0 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RegistersExceptionHandlers.php(55): Laravel\Lumen\Application->handleShutdown()
+#1 [internal function]: Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#2 {main}  
+[2018-03-06 18:14:42] lumen.ERROR: exception 'ErrorException' with message 'Undefined offset: 0' in E:\UwAmp\www\api.arrosmart.tk\app\Http\Controllers\UsersController.php:62
+Stack trace:
+#0 E:\UwAmp\www\api.arrosmart.tk\app\Http\Controllers\UsersController.php(62): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}(8, 'Undefined offse...', 'E:\\UwAmp\\www\\ap...', 62, Array)
+#1 [internal function]: App\Http\Controllers\UsersController->showOneUser('2')
+#2 E:\UwAmp\www\api.arrosmart.tk\vendor\illuminate\container\Container.php(507): call_user_func_array(Array, Array)
+#3 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(603): Illuminate\Container\Container->call(Array, Array)
+#4 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(570): Laravel\Lumen\Application->callControllerCallable(Array, Array)
+#5 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(543): Laravel\Lumen\Application->callLumenController(Object(App\Http\Controllers\UsersController), 'showOneUser', Array)
+#6 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(511): Laravel\Lumen\Application->callControllerAction(Array)
+#7 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(496): Laravel\Lumen\Application->callActionOnArrayBasedRoute(Array)
+#8 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(466): Laravel\Lumen\Application->handleFoundRoute(Array)
+#9 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(398): Laravel\Lumen\Application->handleDispatcherResponse(Array)
+#10 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(643): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#11 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(399): Laravel\Lumen\Application->sendThroughPipeline(Array, Object(Closure))
+#12 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(340): Laravel\Lumen\Application->dispatch(Object(Illuminate\Http\Request))
+#13 E:\UwAmp\www\api.arrosmart.tk\public\index.php(28): Laravel\Lumen\Application->run(Object(Illuminate\Http\Request))
+#14 {main}  
+[2018-03-06 18:17:36] lumen.ERROR: exception 'ErrorException' with message 'Undefined offset: 0' in E:\UwAmp\www\api.arrosmart.tk\app\Http\Controllers\UsersController.php:65
+Stack trace:
+#0 E:\UwAmp\www\api.arrosmart.tk\app\Http\Controllers\UsersController.php(65): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}(8, 'Undefined offse...', 'E:\\UwAmp\\www\\ap...', 65, Array)
+#1 [internal function]: App\Http\Controllers\UsersController->showOneUser('2')
+#2 E:\UwAmp\www\api.arrosmart.tk\vendor\illuminate\container\Container.php(507): call_user_func_array(Array, Array)
+#3 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(603): Illuminate\Container\Container->call(Array, Array)
+#4 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(570): Laravel\Lumen\Application->callControllerCallable(Array, Array)
+#5 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(543): Laravel\Lumen\Application->callLumenController(Object(App\Http\Controllers\UsersController), 'showOneUser', Array)
+#6 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(511): Laravel\Lumen\Application->callControllerAction(Array)
+#7 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(496): Laravel\Lumen\Application->callActionOnArrayBasedRoute(Array)
+#8 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(466): Laravel\Lumen\Application->handleFoundRoute(Array)
+#9 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(398): Laravel\Lumen\Application->handleDispatcherResponse(Array)
+#10 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(643): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#11 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(399): Laravel\Lumen\Application->sendThroughPipeline(Array, Object(Closure))
+#12 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(340): Laravel\Lumen\Application->dispatch(Object(Illuminate\Http\Request))
+#13 E:\UwAmp\www\api.arrosmart.tk\public\index.php(28): Laravel\Lumen\Application->run(Object(Illuminate\Http\Request))
+#14 {main}  
+[2018-03-06 18:25:46] lumen.ERROR: exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 's' in 'where clause'' in E:\UwAmp\www\api.arrosmart.tk\vendor\illuminate\database\Connection.php:333
+Stack trace:
+#0 E:\UwAmp\www\api.arrosmart.tk\vendor\illuminate\database\Connection.php(333): PDO->prepare('SELECT * FROM u...')
+#1 E:\UwAmp\www\api.arrosmart.tk\vendor\illuminate\database\Connection.php(722): Illuminate\Database\Connection->Illuminate\Database\{closure}(Object(Illuminate\Database\MySqlConnection), 'SELECT * FROM u...', Array)
+#2 E:\UwAmp\www\api.arrosmart.tk\vendor\illuminate\database\Connection.php(685): Illuminate\Database\Connection->runQueryCallback('SELECT * FROM u...', Array, Object(Closure))
+#3 E:\UwAmp\www\api.arrosmart.tk\vendor\illuminate\database\Connection.php(349): Illuminate\Database\Connection->run('SELECT * FROM u...', Array, Object(Closure))
+#4 [internal function]: Illuminate\Database\Connection->select('SELECT * FROM u...')
+#5 E:\UwAmp\www\api.arrosmart.tk\vendor\illuminate\database\DatabaseManager.php(317): call_user_func_array(Array, Array)
+#6 E:\UwAmp\www\api.arrosmart.tk\vendor\illuminate\support\Facades\Facade.php(217): Illuminate\Database\DatabaseManager->__call('select', Array)
+#7 E:\UwAmp\www\api.arrosmart.tk\vendor\illuminate\support\Facades\Facade.php(217): Illuminate\Database\DatabaseManager->select('SELECT * FROM u...')
+#8 E:\UwAmp\www\api.arrosmart.tk\app\Http\Controllers\UsersController.php(69): Illuminate\Support\Facades\Facade::__callStatic('select', Array)
+#9 E:\UwAmp\www\api.arrosmart.tk\app\Http\Controllers\UsersController.php(69): Illuminate\Support\Facades\DB::select('SELECT * FROM u...')
+#10 [internal function]: App\Http\Controllers\UsersController->showOneUser('s')
+#11 E:\UwAmp\www\api.arrosmart.tk\vendor\illuminate\container\Container.php(507): call_user_func_array(Array, Array)
+#12 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(603): Illuminate\Container\Container->call(Array, Array)
+#13 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(570): Laravel\Lumen\Application->callControllerCallable(Array, Array)
+#14 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(543): Laravel\Lumen\Application->callLumenController(Object(App\Http\Controllers\UsersController), 'showOneUser', Array)
+#15 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(511): Laravel\Lumen\Application->callControllerAction(Array)
+#16 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(496): Laravel\Lumen\Application->callActionOnArrayBasedRoute(Array)
+#17 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(466): Laravel\Lumen\Application->handleFoundRoute(Array)
+#18 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(398): Laravel\Lumen\Application->handleDispatcherResponse(Array)
+#19 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(643): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#20 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(399): Laravel\Lumen\Application->sendThroughPipeline(Array, Object(Closure))
+#21 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(340): Laravel\Lumen\Application->dispatch(Object(Illuminate\Http\Request))
+#22 E:\UwAmp\www\api.arrosmart.tk\public\index.php(28): Laravel\Lumen\Application->run(Object(Illuminate\Http\Request))
+#23 {main}
+
+Next exception 'Illuminate\Database\QueryException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 's' in 'where clause' (SQL: SELECT * FROM users WHERE id = s)' in E:\UwAmp\www\api.arrosmart.tk\vendor\illuminate\database\Connection.php:729
+Stack trace:
+#0 E:\UwAmp\www\api.arrosmart.tk\vendor\illuminate\database\Connection.php(685): Illuminate\Database\Connection->runQueryCallback('SELECT * FROM u...', Array, Object(Closure))
+#1 E:\UwAmp\www\api.arrosmart.tk\vendor\illuminate\database\Connection.php(349): Illuminate\Database\Connection->run('SELECT * FROM u...', Array, Object(Closure))
+#2 [internal function]: Illuminate\Database\Connection->select('SELECT * FROM u...')
+#3 E:\UwAmp\www\api.arrosmart.tk\vendor\illuminate\database\DatabaseManager.php(317): call_user_func_array(Array, Array)
+#4 E:\UwAmp\www\api.arrosmart.tk\vendor\illuminate\support\Facades\Facade.php(217): Illuminate\Database\DatabaseManager->__call('select', Array)
+#5 E:\UwAmp\www\api.arrosmart.tk\vendor\illuminate\support\Facades\Facade.php(217): Illuminate\Database\DatabaseManager->select('SELECT * FROM u...')
+#6 E:\UwAmp\www\api.arrosmart.tk\app\Http\Controllers\UsersController.php(69): Illuminate\Support\Facades\Facade::__callStatic('select', Array)
+#7 E:\UwAmp\www\api.arrosmart.tk\app\Http\Controllers\UsersController.php(69): Illuminate\Support\Facades\DB::select('SELECT * FROM u...')
+#8 [internal function]: App\Http\Controllers\UsersController->showOneUser('s')
+#9 E:\UwAmp\www\api.arrosmart.tk\vendor\illuminate\container\Container.php(507): call_user_func_array(Array, Array)
+#10 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(603): Illuminate\Container\Container->call(Array, Array)
+#11 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(570): Laravel\Lumen\Application->callControllerCallable(Array, Array)
+#12 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(543): Laravel\Lumen\Application->callLumenController(Object(App\Http\Controllers\UsersController), 'showOneUser', Array)
+#13 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(511): Laravel\Lumen\Application->callControllerAction(Array)
+#14 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(496): Laravel\Lumen\Application->callActionOnArrayBasedRoute(Array)
+#15 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(466): Laravel\Lumen\Application->handleFoundRoute(Array)
+#16 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(398): Laravel\Lumen\Application->handleDispatcherResponse(Array)
+#17 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(643): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#18 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(399): Laravel\Lumen\Application->sendThroughPipeline(Array, Object(Closure))
+#19 E:\UwAmp\www\api.arrosmart.tk\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(340): Laravel\Lumen\Application->dispatch(Object(Illuminate\Http\Request))
+#20 E:\UwAmp\www\api.arrosmart.tk\public\index.php(28): Laravel\Lumen\Application->run(Object(Illuminate\Http\Request))
+#21 {main}  
