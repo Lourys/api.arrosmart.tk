@@ -16,7 +16,13 @@ $app->get('/', function () use ($app) {
 });
 
 $app->post('getAccessToken', [
-  'uses' => 'UsersController@authenticate'
+  'uses' => 'AuthController@createToken'
+]);
+$app->post('refreshAccessToken', [
+  'uses' => 'AuthController@refreshToken'
+]);
+$app->post('checkAccessTokenValidity', [
+  'uses' => 'AuthController@checkTokenValidity'
 ]);
 
 $app->get('users', [

@@ -27,26 +27,6 @@ class UsersController extends Controller
     $this->request = $request;
   }
 
-  public function authenticate()
-  {
-    $params = $this->request->only('email', 'password');
-    $email = $params['email'];
-    $pass = $params['password'];
-
-    if ($results = DB::select("SELECT password, api_key FROM users WHERE email = :email", ['email' => $email])) {
-      if (password_verify($pass, $results[0]->password)) {
-        return response()->json([
-          'api_key' => $results[0]->api_key
-        ]);
-      }
-    }
-
-    // User not found
-    return response()->json([
-      'message' => 'Email or password incorrect',
-    ])->setStatusCode(401);
-  }
-
   /**
    * Shows all users data in JSON format
    *
