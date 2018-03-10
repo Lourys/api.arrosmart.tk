@@ -27,6 +27,26 @@ class UsersController extends Controller
     $this->request = $request;
   }
 
+  public function authenticate()
+  {
+    $params = $this->request->only('email', 'password');
+    $email = $params['email'];
+    $pass = $params['password'];
+
+    if ($results = DB::select("SELECT password, api_key FROM users WHERE email = :email", ['email' => $email])) {
+      if (password_verify($pass, $results[0]->password)) {
+        return response()->json([
+          'api_key' => $results[0]->api_key
+        ]);
+      }
+    }
+
+    // User not found
+    return response()->json([
+      'message' => 'Email or password incorrect',
+    ])->setStatusCode(401);
+  }
+
   /**
    * Shows all users data in JSON format
    *
@@ -36,14 +56,14 @@ class UsersController extends Controller
   public function showAllUsers()
   {
     $params = $this->request->all();
-    $fields = isset($params['fields']) ? $params['fields'] : '*';
+    $fields = isset($params['fields']) ? $this->getFields($params['fields'], $this->columns) : '*';
 
 
     if ($results = DB::select("SELECT $fields FROM users")) {
       return response()->json($results); // Success
     }
 
-    // User not found
+    // No user
     return response()->json([
       'message' => 'There is no user',
     ])->setStatusCode(404);
@@ -72,28 +92,30 @@ class UsersController extends Controller
     }
 
     $params = $this->request->all();
-    $fields = isset($params['fields']) ? $params['fields'] : '*';
+    $fields = isset($params['fields']) ? $this->getFields($params['fields'], $this->columns) : '*';
 
-    if ($results = DB::select("SELECT $fields FROM users WHERE id = $id")) {
+    if ($results = DB::select("SELECT $fields FROM users WHERE id = :id", ['id' => $id])) {
       return response()->json($results[0]); // Success
     }
 
+    // User not found
     return response()->json([
       'message' => 'The user requested does not exist',
     ])->setStatusCode(404);
   }
 
 
-  /**
-   * Creates new user
-   *
-   *
-   * @return \Symfony\Component\HttpFoundation\Response
-   */
-  public function createUser()
+  private function getFields($fields, $columns)
   {
-    $results = DB::select("SELECT $this->fields FROM users WHERE id = $id");
+    if (isset($fields)) {
+      foreach (explode(',', $fields) as $field) {
+        $field = strtolower($field);
+        if (in_array($field, $columns)) {
+          $endFields[] = $field;
+        }
+      }
 
-    return response()->json($results[0]);
+      return implode(', ', $endFields);
+    }
   }
 }

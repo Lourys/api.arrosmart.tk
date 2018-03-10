@@ -15,12 +15,16 @@ $app->get('/', function () use ($app) {
   abort(403, 'Unauthorized action.');
 });
 
+$app->post('getAccessToken', [
+  'uses' => 'UsersController@authenticate'
+]);
+
 $app->get('users', [
-    'uses'       => 'UsersController@showAllUsers'
+  'uses' => 'UsersController@showAllUsers'
 ]);
 $app->get('user/{id}', [
-    'uses'       => 'UsersController@showOneUser'
+  'uses' => 'UsersController@showOneUser'
 ]);
 $app->post('users', [
-    'uses'       => 'UsersController@addUser'
+  'uses' => 'UsersController@addUser'
 ]);
