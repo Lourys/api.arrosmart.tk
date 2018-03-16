@@ -11,10 +11,18 @@
 |
 */
 
+$app->routeMiddleware([
+  'auth' => App\Http\Middleware\AuthCheckMiddleware::class,
+]);
+
+
 $app->get('/', function () use ($app) {
   abort(403, 'Unauthorized action.');
 });
 
+//////////////////////
+// TOKEN MANAGEMENT //
+//////////////////////
 $app->post('getAccessToken', [
   'uses' => 'AuthController@createToken'
 ]);
@@ -25,12 +33,25 @@ $app->post('checkAccessTokenValidity', [
   'uses' => 'AuthController@checkTokenValidity'
 ]);
 
+//////////////////////
+// USERS MANAGEMENT //
+//////////////////////
 $app->get('users', [
+  'middleware' => 'auth:true',
   'uses' => 'UsersController@showAllUsers'
 ]);
 $app->get('user/{id}', [
+  'middleware' => 'auth:true',
   'uses' => 'UsersController@showOneUser'
+]);
+$app->get('user', [
+  'middleware' => 'auth',
+  'uses' => 'UsersController@showAuthenticatedUser'
 ]);
 $app->post('users', [
   'uses' => 'UsersController@addUser'
+]);
+$app->put('user/{id}', [
+  'middleware' => 'auth',
+  'uses' => 'UsersController@editUser'
 ]);

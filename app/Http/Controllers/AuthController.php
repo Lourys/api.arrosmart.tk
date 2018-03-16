@@ -16,6 +16,8 @@ class AuthController extends Controller
    */
   public function __construct(Request $request)
   {
+    parent::__construct();
+
     $this->request = $request;
   }
 
@@ -52,7 +54,7 @@ class AuthController extends Controller
         }
 
         // Insert failed
-        return response()->setStatusCode(500);
+        return response('')->setStatusCode(500);
       }
     }
 
@@ -73,7 +75,7 @@ class AuthController extends Controller
     $params = $this->request->only('token');
     $token = $params['token'];
 
-    if ($results = DB::select("SELECT id FROM tokens WHERE token = :token", ['token' => $token])) {
+    if ($results = DB::select("SELECT id, user_id FROM tokens WHERE token = :token", ['token' => $token])) {
       $token = $this->generateToken();
       $updated = DB::update("UPDATE tokens SET token = :token WHERE id = :id",
         [
@@ -84,12 +86,13 @@ class AuthController extends Controller
       if ($updated) {
         // All is good, returning token
         return response()->json([
-          'token' => $token
+          'token' => $token,
+          'user_id' => $results[0]->user_id
         ]);
       }
 
       // Update failed
-      return response()->setStatusCode(500);
+      return response('')->setStatusCode(500);
     }
 
     // Token not found
