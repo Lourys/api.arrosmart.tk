@@ -148,5 +148,6 @@ return [
     'available' => 'disponible',
     'size' => 'taille',
     'serial_key' => 'numéro de série',
+    'department' => 'département',
   ],
 ];

@@ -61,20 +61,9 @@ class UsersController extends Controller
    *
    * @return \Symfony\Component\HttpFoundation\Response
    */
-  public function showOneUser($id)
+  public function showOneUser($id = null)
   {
-    // Simple check
-    if (!is_numeric($id)) {
-      return response()->json([
-        'message' => 'Parameter(s) is/are not in the correct format',
-        'errors' => [
-          [
-            'message' => 'Oops! The parameter must be numeric',
-            'parameter' => 'id'
-          ],
-        ]
-      ])->setStatusCode(400);
-    }
+    $id = is_null($id) ? $this->user_id : $id;
 
     $params = $this->request->only('fields');
     $fields = isset($params['fields']) ? $this->getFields($params['fields'], $this->columns) : '*';
@@ -124,19 +113,25 @@ class UsersController extends Controller
       'email' => 'required|email|unique:users',
       'password' => 'required|confirmed|min:8'
     ]);
-    $params = $this->request->all();
+    $params = $this->request->only('first_name', 'last_name', 'serial_key', 'email', 'password');
 
+    // Checks if serial key is available
+    $system = DB::select("SELECT id FROM systems WHERE serial_key = :serial_key && owner_id IS NULL", ['serial_key' => $params['serial_key']]);
+    if (!$system) {
+      return response()->json(['serial_key' => ['Le numéro de série que vous avez entré est invalide.']])->setStatusCode(422);
+    }
 
-    $inserted = DB::insert("INSERT INTO users SET email = :email, password = :password, first_name = :first_name, last_name = :last_name, serial_key = :serial_key",
+    $inserted = DB::insert("INSERT INTO users SET email = :email, password = :password, first_name = :first_name, last_name = :last_name",
       [
         'email' => $params['email'],
         'password' => password_hash($params['password'], PASSWORD_BCRYPT),
         'first_name' => $params['first_name'],
-        'last_name' => strtoupper($params['last_name']),
-        'serial_key' => $params['serial_key']
+        'last_name' => strtoupper($params['last_name'])
       ]);
 
     if ($inserted) {
+      $user_id = DB::connection()->getPdo()->lastInsertId();
+      DB::update("UPDATE systems SET owner_id = :owner_id WHERE serial_key = :serial_key", ['owner_id' => $user_id, 'serial_key' => $params['serial_key']]);
       // All is good
       return response('');
     }
@@ -147,44 +142,42 @@ class UsersController extends Controller
 
   public function editUser($id = null)
   {
-    if ((is_numeric($id) && $this->is_admin) || is_null($id)) {
-      $id = is_null($id) ? $this->user_id : $id;
+    $id = is_null($id) ? $this->user_id : $id;
 
-      $this->validate($this->request, [
-        'first_name' => 'required',
-        'last_name' => 'required',
-        'department' => 'required|max:2',
-        'serial_key' => 'required',
-        'email' => 'required|email|unique:users',
-        'password' => 'confirmed|min:8'
-      ]);
-      $params = $this->request->all();
+    $this->validate($this->request, [
+      'first_name' => 'required',
+      'last_name' => 'required',
+      'department' => 'required|max:2',
+      'email' => 'required|email|unique:users,email,' . $id,
+      'password' => 'confirmed|min:8'
+    ]);
+    $params = $this->request->only('first_name', 'last_name', 'department', 'email', 'password');
 
-      $fields = '';
-      foreach ($params as $param) {
-        $fields .= ',' . $param . ' = :' . $param;
+    $fields = '';
+    foreach ($params as $key => $param) {
+      if (isset($key) && $param != '') {
+        $fields .= $key . ' = :' . $key . ', ';
       }
-      substr($fields, 1);
+    }
+    $fields = substr($fields, 0, -2);
 
-      $updated = DB::insert("UPDATE users SET $fields WHERE id = $id",
-        [
-          'email' => $params['email'],
-          'password' => password_hash($params['password'], PASSWORD_BCRYPT), ////////// A FAIRE
-          'first_name' => $params['first_name'],
-          'last_name' => strtoupper($params['last_name']),
-          'department' => $params['department']
-        ]);
-
-      if ($updated) {
-        // All is good
-        return response('');
-      }
-
-      // Update failed
-      return response('')->setStatusCode(500);
+    $data = [
+      'email' => $params['email'],
+      'first_name' => $params['first_name'],
+      'last_name' => strtoupper($params['last_name']),
+      'department' => $params['department']
+    ];
+    if (isset($params['password']) && $params['password'] != '') {
+      $data['password'] = password_hash($params['password'], PASSWORD_BCRYPT);
     }
 
-    return abort(403, 'Unauthorized action.');
+    if (DB::update("UPDATE users SET $fields WHERE id = $id", $data)) {
+      // All is good
+      return response('');
+    }
+
+    // Update failed
+    return response(var_dump($fields))->setStatusCode(500);
   }
 
 

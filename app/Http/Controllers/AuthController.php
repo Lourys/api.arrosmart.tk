@@ -29,6 +29,10 @@ class AuthController extends Controller
    */
   public function createToken()
   {
+    $this->validate($this->request, [
+      'email' => 'required|email',
+      'password' => 'required'
+    ]);
     $params = $this->request->only('email', 'password');
     $email = $params['email'];
     $pass = $params['password'];

@@ -21,7 +21,7 @@ class AuthCheckMiddleware
   public function handle($request, Closure $next, $admin = false)
   {
     $params = $request->only('token');
-    if (isset($params['token']) && $result = DB::select("SELECT t.user_id, u.is_admin FROM tokens t, users u WHERE t.token = :token && u.id = t.user_id", ['token' => $params['token']])) {
+    if (isset($params['token']) && $result = DB::select("SELECT t.user_id, u.is_admin, u.email FROM tokens t, users u WHERE t.token = :token && u.id = t.user_id", ['token' => $params['token']])) {
       if (($admin && $result[0]->is_admin) || !$admin) {
         $request->attributes->add(['user_id' => $result[0]->user_id]);
         $request->attributes->add(['is_admin' => $result[0]->is_admin]);

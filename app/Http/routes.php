@@ -16,42 +16,67 @@ $app->routeMiddleware([
 ]);
 
 
-$app->get('/', function () use ($app) {
-  abort(403, 'Unauthorized action.');
-});
-
 //////////////////////
 // TOKEN MANAGEMENT //
 //////////////////////
+
+/* Creates a token to execute actions with an account */
 $app->post('getAccessToken', [
   'uses' => 'AuthController@createToken'
 ]);
+
+/* Regenerates the token */
 $app->post('refreshAccessToken', [
   'uses' => 'AuthController@refreshToken'
 ]);
+
+/* Checks if the token is still valid */
 $app->post('checkAccessTokenValidity', [
   'uses' => 'AuthController@checkTokenValidity'
 ]);
 
+
+
 //////////////////////
 // USERS MANAGEMENT //
 //////////////////////
+
+/* Shows all users list */
 $app->get('users', [
   'middleware' => 'auth:true',
   'uses' => 'UsersController@showAllUsers'
 ]);
+
+/* Shows only one user */
 $app->get('user/{id}', [
   'middleware' => 'auth:true',
   'uses' => 'UsersController@showOneUser'
 ]);
 $app->get('user', [
   'middleware' => 'auth',
-  'uses' => 'UsersController@showAuthenticatedUser'
+  'uses' => 'UsersController@showOneUser'
 ]);
+
+/* Creates a new user */
 $app->post('users', [
   'uses' => 'UsersController@addUser'
 ]);
-$app->put('user/{id}', [
+
+/* Changes user's data */
+$app->put('user', [
   'middleware' => 'auth',
   'uses' => 'UsersController@editUser'
 ]);
+$app->put('user/{id}', [
+  'middleware' => 'auth:true',
+  'uses' => 'UsersController@editUser'
+]);
+
+
+
+/////////////////
+//// GENERAL ////
+/////////////////
+$app->get('/', function () use ($app) {
+  abort(403, 'Unauthorized action.');
+});
