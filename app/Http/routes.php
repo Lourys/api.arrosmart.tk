@@ -74,6 +74,23 @@ $app->put('user/{id}', [
 
 
 
+//////////////////////
+// TOKEN MANAGEMENT //
+//////////////////////
+
+/* Shows schedule program */
+$app->get('schedule', [
+  'middleware' => 'auth',
+  'uses' => 'ScheduleController@getSchedule'
+]);
+
+/* Changes schedule system data */
+$app->put('schedule', [
+  'middleware' => 'auth',
+  'uses' => 'ScheduleController@editSchedule'
+]);
+
+
 /////////////////
 //// GENERAL ////
 /////////////////

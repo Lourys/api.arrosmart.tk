@@ -140,6 +140,13 @@ class UsersController extends Controller
     return response('')->setStatusCode(500);
   }
 
+  /**
+   * Edit an user by his ID
+   *
+   * @param null $id
+   *
+   * @return \Laravel\Lumen\Http\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+   */
   public function editUser($id = null)
   {
     $id = is_null($id) ? $this->user_id : $id;

@@ -149,5 +149,9 @@ return [
     'size' => 'taille',
     'serial_key' => 'numéro de série',
     'department' => 'département',
+    'end_flow' => 'débit d\'eau',
+    'volume' => 'quantité d\'eau',
+    'duration' => 'durée d\'arrosage',
+    'moment' => 'moment',
   ],
 ];
