@@ -69,12 +69,12 @@ class SystemController extends Controller
       $date1Day = date_format(date_modify(date_create(date('Y-m-d H:i:s')), "-1 day"), 'Y-m-d H:i:s');
       $dataDay = DB::select("SELECT data FROM data WHERE system_id = :system_id && checked_at > '$date1Day'", ['system_id' => $results[0]->id]);
 
-      $rainfallSum = 0;
+      $rainfallSum = null;
       foreach ($dataDay as $value) {
         $rainfallSum += json_decode($value->data, true)['rainfall'];
       }
 
-      if ($data && $dataDay) {
+      if ($data) {
         $dataArr = json_decode($data[0]->data, true);
         // All is good
         return response()->json([
@@ -87,7 +87,7 @@ class SystemController extends Controller
             ],
             'rainfall' => [
               'last' => $dataArr['rainfall'],
-              'sum' => $rainfallSum ? $rainfallSum : '-'
+              'sum' => isset($rainfallSum) ? $rainfallSum : '-'
             ],
           ],
           'checked_at' => $data[0]->checked_at
