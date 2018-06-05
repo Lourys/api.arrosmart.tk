@@ -55,15 +55,17 @@ class ScheduleController extends Controller
       'end_flow' => 'required|min:0',
       'volume' => 'required|min:0',
       'duration' => 'required',
-      'days' => 'array|in:monday,tuesday,wednesday,thursday,friday,saturday,sunday',
+      'surface' => 'required|min:0',
+      'days' => 'array',
       'moment' => 'required|in:morning,afternoon,evening'
     ]);
-    $params = $this->request->only('end_flow', 'volume', 'duration', 'days', 'moment');
+    $params = $this->request->only('end_flow', 'volume', 'duration', 'surface', 'days', 'moment');
 
     $data = [
       'end_flow' => $params['end_flow'],
       'volume' => $params['volume'],
       'duration' => $params['duration'],
+      'surface' => $params['surface'],
       'days' => $params['days'],
       'moment' => $params['moment']
     ];

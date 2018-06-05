@@ -13,6 +13,7 @@
 
 $app->routeMiddleware([
   'auth' => App\Http\Middleware\AuthCheckMiddleware::class,
+  'systemCheck' => App\Http\Middleware\SystemCheckMiddleware::class,
 ]);
 
 
@@ -72,6 +73,16 @@ $app->put('user/{id}', [
   'uses' => 'UsersController@editUser'
 ]);
 
+/* Changes user's settings */
+$app->put('user/settings', [
+  'middleware' => 'auth',
+  'uses' => 'UsersController@editUserSettings'
+]);
+$app->put('user/{id}/settings', [
+  'middleware' => 'auth:true',
+  'uses' => 'UsersController@editUserSettings'
+]);
+
 
 
 //////////////////////
@@ -89,6 +100,31 @@ $app->put('schedule', [
   'middleware' => 'auth',
   'uses' => 'ScheduleController@editSchedule'
 ]);
+
+
+
+///////////////////////
+// SYSTEM MANAGEMENT //
+///////////////////////
+
+/* Add some weather data */
+$app->post('system/addData', [
+  'middleware' => 'systemCheck',
+  'uses' => 'SystemController@addData'
+]);
+
+/* Get some weather data */
+$app->get('system/getData', [
+  'middleware' => 'auth',
+  'uses' => 'SystemController@getData'
+]);
+
+/* Get raw weather data */
+$app->get('system/getRawData', [
+  'middleware' => 'auth',
+  'uses' => 'SystemController@getRawData'
+]);
+
 
 
 /////////////////

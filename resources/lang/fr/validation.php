@@ -153,5 +153,6 @@ return [
     'volume' => 'quantité d\'eau',
     'duration' => 'durée d\'arrosage',
     'moment' => 'moment',
+    'water_price' => 'prix de l\'eau',
   ],
 ];

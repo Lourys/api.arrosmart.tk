@@ -143,7 +143,7 @@ class UsersController extends Controller
   /**
    * Edit an user by his ID
    *
-   * @param null $id
+   * @param null|int $id
    *
    * @return \Laravel\Lumen\Http\ResponseFactory|\Symfony\Component\HttpFoundation\Response
    */
@@ -184,7 +184,37 @@ class UsersController extends Controller
     }
 
     // Update failed
-    return response(var_dump($fields))->setStatusCode(500);
+    return response('')->setStatusCode(500);
+  }
+
+
+  /**
+   * Edit user's settings
+   *
+   * @param null|int $user_id
+   *
+   * @return \Laravel\Lumen\Http\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+   */
+  public function editUserSettings($user_id = null)
+  {
+    $user_id = is_null($user_id) ? $this->user_id : $user_id;
+
+    $this->validate($this->request, [
+      'water_price' => 'required|min:0'
+    ]);
+    $params = $this->request->only('water_price');
+
+    $data = [
+      'water_price' => $params['water_price']
+    ];
+
+    if (DB::update("UPDATE users SET settings = :settings WHERE id = $user_id", ['settings' => json_encode($data)])) {
+      // All is good
+      return response('');
+    }
+
+    // Update failed
+    return response('')->setStatusCode(500);
   }
 
 
